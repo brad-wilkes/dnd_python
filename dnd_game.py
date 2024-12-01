@@ -60,13 +60,10 @@ enemy_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
 
 # Set up the game loop
 running = True
+rolls_done = False
 
-while running:
+def draw_screen():
     screen.fill(WHITE)
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
 
     # Draw the characters
     player_text = font.render(f"{player_one.name}: {player_one.hp}", True, BLACK)
@@ -100,7 +97,27 @@ while running:
     d12_text = font.render(f"D12: {d12.roll()}", True, BLACK)
     screen.blit(d12_text, (50, 350))
 
+    # Draw the button
+    pygame.draw.rect(screen, GREEN, (350, 500, 100, 50))
+    button_text = font.render("Reroll", True, BLACK)
+    screen.blit(button_text, (365, 515))
+
     pygame.display.flip()
+
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = event.pos
+            if 350 <= mouse_pos[0] <= 450 and 500 <= mouse_pos[1] <= 550:
+                rolls_done = False
+
+    if not rolls_done:
+        draw_screen()
+        rolls_done = True
+
+    clock.tick(60)
 
 pygame.quit()
 
