@@ -47,7 +47,41 @@ running = True
 while running:
     screen.fill(WHITE)
 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
+    # Draw the characters
+    player_text = font.render(f"{player.name}: {player.hp}", True, BLACK)
+    screen.blit(player_text, (50, 50))
+
+    enemy_text = font.render(f"{enemy.name}: {enemy.hp}", True, BLACK)
+    screen.blit(enemy_text, (600, 50))
+
+    # Draw the weapons
+    if player_weapon:
+        player_weapon_text = font.render(f"{player_weapon.name}: {player_weapon.damage.roll()}", True, BLACK)
+        screen.blit(player_weapon_text, (50, 100))
+
+    if enemy_weapon:
+        enemy_weapon_text = font.render(f"{enemy_weapon.name}: {enemy_weapon.damage.roll()}", True, BLACK)
+        screen.blit(enemy_weapon_text, (600, 100))
+
+    # Draw the dice
+    d20_text = font.render(f"D20: {d20.roll()}", True, BLACK)
+    screen.blit(d20_text, (50, 150))
+
+    d8_text = font.render(f"D8: {d8.roll()}", True, BLACK)
+    screen.blit(d8_text, (50, 200))
+
+    d6_text = font.render(f"D6: {d6.roll()}", True, BLACK)
+    screen.blit(d6_text, (50, 250))
+
+    d4_text = font.render(f"D4: {d4.roll()}", True, BLACK)
+    screen.blit(d4_text, (50, 300))
+
+    d12_text = font.render(f"D12: {d12.roll()}", True, BLACK)
+    screen.blit(d12_text, (50, 350))
 
     pygame.display.flip()
 
