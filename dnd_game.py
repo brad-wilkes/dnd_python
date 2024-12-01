@@ -1,4 +1,4 @@
-from dice import D20, D8, D6, D4, D12
+from dice import D20, D8, D6, D4, D12, D10
 from classes import Bard, Fighter, Rogue, Warlock, Wizard, Paladin, Base
 from weapons import Axe, Sword, Flail, Bow, Polearm, Normal, Martial
 
@@ -40,6 +40,7 @@ d8 = D8()
 d6 = D6()
 d4 = D4()
 d12 = D12()
+d10 = D10()
 
 # Set up the characters
 player_one = Bard("Player One", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
@@ -56,9 +57,33 @@ player_three_weapon = Sword("Sword", 1, 6, 3, 10, "Melee")
 player_four_weapon = Flail("Flail", 1, 10, 2, 10, "Melee")
 enemy_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
 
+dice_results = {
+    "d20": d20.roll(),
+    "d8": d8.roll(),
+    "d6": d6.roll(),
+    "d4": d4.roll(),
+    "d12": d12.roll(),
+    "d10": d10.roll()
+}
 # Set up the game loop
 running = True
 rolls_done = False
+
+def reroll_stats(player):
+    player.strength = d6.stat_roll_sum()
+    player.dexterity = d6.stat_roll_sum()
+    player.constitution = d6.stat_roll_sum()
+    player.intelligence = d6.stat_roll_sum()
+    player.wisdom = d6.stat_roll_sum()
+    player.charisma = d6.stat_roll_sum()
+
+def reroll_dice():
+    dice_results["d20"] = d20.roll()
+    dice_results["d8"] = d8.roll()
+    dice_results["d6"] = d6.roll()
+    dice_results["d4"] = d4.roll()
+    dice_results["d12"] = d12.roll()
+    dice_results["d10"] = d10.roll()
 
 def draw_screen():
     screen.fill(WHITE)
@@ -86,37 +111,31 @@ def draw_screen():
     enemy_text = font.render(f"{enemy.name}: {enemy.hp}", True, BLACK)
     screen.blit(enemy_text, (600, 50))
 
-    # Draw the weapons
-    if player_one_weapon:
-        player_weapon_text = font.render(f"{player_one_weapon.name}: {player_one_weapon.damage.roll()}", True, BLACK)
-        screen.blit(player_weapon_text, (50, 100))
-
-    if enemy_weapon:
-        enemy_weapon_text = font.render(f"{enemy_weapon.name}: {enemy_weapon.damage.roll()}", True, BLACK)
-        screen.blit(enemy_weapon_text, (600, 100))
-
     # Draw the dice
-    d20_text = font.render(f"D20: {d20.roll()}", True, BLACK)
-    screen.blit(d20_text, (50, 150))
+    dice_positions = [
+        (dice_results["d20"], "D20", 150),
+        (dice_results["d8"], "D8", 200),
+        (dice_results["d6"], "D6", 250),
+        (dice_results["d4"], "D4", 300),
+        (dice_results["d12"], "D12", 350),
+        (dice_results["d10"], "D10", 400)
+    ]
 
-    d8_text = font.render(f"D8: {d8.roll()}", True, BLACK)
-    screen.blit(d8_text, (50, 200))
+    for die, label, y_pos in dice_positions:
+        text_surface = font.render(f"{label}: {die}", True, BLACK)
+        screen.blit(text_surface, (50, y_pos))
 
-    d6_text = font.render(f"D6: {d6.roll()}", True, BLACK)
-    screen.blit(d6_text, (50, 250))
-
-    d4_text = font.render(f"D4: {d4.roll()}", True, BLACK)
-    screen.blit(d4_text, (50, 300))
-
-    d12_text = font.render(f"D12: {d12.roll()}", True, BLACK)
-    screen.blit(d12_text, (50, 350))
-
-    # Draw the button
+    # Draw the buttons
     pygame.draw.rect(screen, GREEN, (350, 500, 100, 50))
-    button_text = font.render("Reroll", True, BLACK)
-    screen.blit(button_text, (365, 515))
+    button_text = font.render("Reroll Stats", True, BLACK)
+    screen.blit(button_text, (355, 515))
+
+    pygame.draw.rect(screen, BLUE, (500, 500, 100, 50))
+    button_text = font.render("Reroll Dice", True, BLACK)
+    screen.blit(button_text, (505, 515))
 
     pygame.display.flip()
+
 
 while running:
     for event in pygame.event.get():
@@ -125,6 +144,10 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = event.pos
             if 350 <= mouse_pos[0] <= 450 and 500 <= mouse_pos[1] <= 550:
+                reroll_stats(player_one)
+                rolls_done = False
+            elif 500 <= mouse_pos[0] <= 600 and 500 <= mouse_pos[1] <= 550:
+                reroll_dice()
                 rolls_done = False
 
     if not rolls_done:
