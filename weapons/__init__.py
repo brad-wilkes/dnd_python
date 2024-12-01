@@ -1,5 +1,5 @@
 from .simple import Simple
-from .martial import Martial
+from .exotic import Exotic
 from .axe import Axe
 from .sword import Sword
 from .polearm import Polearm

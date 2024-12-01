@@ -1,9 +1,9 @@
-from .martial import Martial
+from .exotic import Exotic
 
-class Flail(Martial):
+class Flail(Exotic):
     """A class to represent a flail weapon."""
 
-    def __init__(self, properties, name="Flail", damage="1d8", weap_range="Melee", weight=2, cost=10):
+    def __init__(self, name, damage, weap_range, weight, cost, properties):
         """
         :param name: The name of the weapon.
         :param damage: The damage the weapon deals.

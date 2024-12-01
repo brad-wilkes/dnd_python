@@ -1,6 +1,6 @@
 from dice.d12 import D12
 
-class Martial:
+class Exotic:
     """A class to represent all kinds of martial weapons."""
 
     def __init__(self, name, damage, weap_range, weight, cost, properties):

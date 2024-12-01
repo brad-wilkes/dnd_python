@@ -1,9 +1,9 @@
-from .martial import Martial
+from .exotic import Exotic
 
-class Polearm(Martial):
+class Polearm(Exotic):
     """A class to represent a polearm weapon."""
 
-    def __init__(self, properties, name="Polearm", damage="1d10", weap_range="Melee", weight=6, cost=20):
+    def __init__(self, name, damage, weap_range, weight, cost, properties):
         """
         :param name: The name of the weapon.
         :param damage: The damage the weapon deals.
