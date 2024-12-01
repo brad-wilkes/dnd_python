@@ -1,3 +1,4 @@
+from .d4 import D4
 from .d6 import D6
 from .d8 import D8
 from .d10 import D10
