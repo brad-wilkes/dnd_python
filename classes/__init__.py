@@ -1,3 +1,4 @@
+from .base import Base
 from .bard import Bard
 from .fighter import Fighter
 from .rogue import Rogue

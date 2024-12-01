@@ -1,5 +1,5 @@
 from dice import D20
-from normal import Normal
+from .normal import Normal
 
 class Bow(Normal):
     """A class to represent a bow."""

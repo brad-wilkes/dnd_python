@@ -1,5 +1,5 @@
 from dice.d20 import D20
-from base import Base
+from .base import Base
 
 class Bard(Base):
     """A class representing a bard."""

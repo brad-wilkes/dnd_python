@@ -1,4 +1,4 @@
-from normal import Normal
+from .normal import Normal
 
 class Axe(Normal):
     """A class to represent axes."""

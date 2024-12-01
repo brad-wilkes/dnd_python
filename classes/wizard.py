@@ -1,5 +1,5 @@
 from dice.d20 import D20
-from base import Base
+from .base import Base
 
 class Wizard(Base):
     """A class representing a wizard."""

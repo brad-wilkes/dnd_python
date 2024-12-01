@@ -1,5 +1,5 @@
 from dice import D20
-from base import Base
+from .base import Base
 
 class Warlock(Base):
     """A class representing a warlock."""
