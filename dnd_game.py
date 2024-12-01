@@ -1,5 +1,6 @@
-from classes.base import Base
 from dice import D20, D8, D6, D4, D12
+from classes import Bard, Fighter, Rogue, Warlock, Wizard, Paladin, Base
+from weapons import Axe, Sword, Flail, Bow, Polearm, Normal, Martial
 
 import pygame
 import sys
@@ -41,12 +42,23 @@ d4 = D4()
 d12 = D12()
 
 # Set up the characters
-player = Base("Player", 100)
-enemy = Base("Enemy", 100)
+player_one = Bard("Player One", 100, 10, 10, 10, 10, 10, 10)
+player_two = Fighter("Player Two", 100, 10, 10, 10, 10, 10, 10)
+player_three = Rogue("Player Three", 100, 10, 10, 10, 10, 10, 10)
+player_four = Warlock("Player Four", 100, 10, 10, 10, 10, 10, 10)
+player_five = Wizard("Player Five", 100, 10, 10, 10, 10, 10, 10)
+player_six = Paladin("Player Six", 100, 10, 10, 10, 10, 10, 10)
+
+enemy = Base("Bad Guy", 1500, 18, 12, 18, 16, 10, 6)
 
 # Set up the weapons
-player_weapon = None
-enemy_weapon = None
+player_one_weapon = Bow("Bow", 1, 8, 2, 25, "Ranged")
+player_two_weapon = Axe("Axe", 1, 12, 5, 15, "Melee")
+player_three_weapon = Sword("Sword", 1, 6, 3, 10, "Melee")
+player_four_weapon = Flail("Flail", 1, 10, 2, 10, "Melee")
+player_five_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
+player_six_weapon = Flail("Flail", 1, 10, 2, 10, "Melee")
+enemy_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
 
 # Set up the game loop
 running = True
@@ -59,15 +71,15 @@ while running:
             running = False
 
     # Draw the characters
-    player_text = font.render(f"{player.name}: {player.hp}", True, BLACK)
+    player_text = font.render(f"{player_one.name}: {player_one.hp}", True, BLACK)
     screen.blit(player_text, (50, 50))
 
     enemy_text = font.render(f"{enemy.name}: {enemy.hp}", True, BLACK)
     screen.blit(enemy_text, (600, 50))
 
     # Draw the weapons
-    if player_weapon:
-        player_weapon_text = font.render(f"{player_weapon.name}: {player_weapon.damage.roll()}", True, BLACK)
+    if player_one_weapon:
+        player_weapon_text = font.render(f"{player_one_weapon.name}: {player_one_weapon.damage.roll()}", True, BLACK)
         screen.blit(player_weapon_text, (50, 100))
 
     if enemy_weapon:
