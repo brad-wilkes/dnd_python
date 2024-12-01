@@ -2,6 +2,8 @@ from classes.base import Base
 from dice import D20, D8, D6, D4, D12
 
 import pygame
+import sys
+
 
 '''
 This is the main game file. It will handle the game loop, and the game logic.
@@ -11,6 +13,9 @@ The weapons are constituted in weapons package
 
 # Initialize the game
 pygame.init()
+
+# Set up the clock
+clock = pygame.time.Clock()
 
 # Set up the screen
 screen = pygame.display.set_mode((800, 600))
@@ -24,7 +29,9 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
 # Set up the fonts
-font = pygame.font.Font(None, 36)
+secondary_font = pygame.font.Font(None, 36)
+alt_font = pygame.font.Font(None, 24)
+font = pygame.font.Font(None, 18)
 
 # Set up the dice
 d20 = D20()
