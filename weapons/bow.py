@@ -1,7 +1,7 @@
 from dice import D20
-from .normal import Normal
+from .simple import Simple
 
-class Bow(Normal):
+class Bow(Simple):
     """A class to represent a bow."""
 
     def __init__(self, name, damage, weap_range, weight, cost, properties):

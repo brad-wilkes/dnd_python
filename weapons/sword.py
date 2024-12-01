@@ -1,6 +1,6 @@
-from .normal import Normal
+from .simple import Simple
 
-class Sword(Normal):
+class Sword(Simple):
     """A class to represent swords."""
 
     def __init__(self, name, damage, weap_range, weight, cost, properties):

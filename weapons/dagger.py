@@ -1,7 +1,7 @@
 from .simple import Simple
 
-class Axe(Simple):
-    """A class to represent axes."""
+class Dagger(Simple):
+    """A class to represent daggers."""
 
     def __init__(self, name, damage, weap_range, weight, cost, properties):
         """
@@ -14,7 +14,7 @@ class Axe(Simple):
         super().__init__(name, damage, weap_range, weight, cost, properties)
 
     def __str__(self):
-        return f"{self.name} ({self.damage.roll()} slashing)"
+        return f"{self.name} ({self.damage.roll()} piercing)"
 
     def __repr__(self):
-        return f"{self.name} ({self.damage.roll()} slashing)"
+        return f"{self.name} ({self.damage.roll()} piercing)"

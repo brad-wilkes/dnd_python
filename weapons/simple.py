@@ -1,7 +1,7 @@
 from dice.d6 import D6
 
-class Normal:
-    """A class to represent all kinds of normal weapons."""
+class Simple:
+    """A class to represent all kinds of simple weapons."""
 
     def __init__(self, name, damage, weap_range, weight, cost, properties):
         """
