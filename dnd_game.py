@@ -42,11 +42,10 @@ d4 = D4()
 d12 = D12()
 
 # Set up the characters
-player_one = Bard("Player One", 100, 10, 10, 10, 10, 10, 10)
-player_two = Fighter("Player Two", 100, 10, 10, 10, 10, 10, 10)
-player_three = Rogue("Player Three", 100, 10, 10, 10, 10, 10, 10)
-player_four = Warlock("Player Four", 100, 10, 10, 10, 10, 10, 10)
-player_five = Wizard("Player Five", 100, 10, 10, 10, 10, 10, 10)
+player_one = Bard("Player One", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
+player_two = Fighter("Player Two", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
+player_three = Rogue("Player Three", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
+player_four = Warlock("Player Four", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
 
 enemy = Base("Bad Guy", 1500, 18, 12, 18, 16, 10, 6)
 
@@ -55,7 +54,6 @@ player_one_weapon = Bow("Bow", 1, 8, 2, 25, "Ranged")
 player_two_weapon = Axe("Axe", 1, 12, 5, 15, "Melee")
 player_three_weapon = Sword("Sword", 1, 6, 3, 10, "Melee")
 player_four_weapon = Flail("Flail", 1, 10, 2, 10, "Melee")
-player_five_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
 enemy_weapon = Polearm("Polearm", 1, 10, 6, 20, "Melee")
 
 # Set up the game loop
@@ -66,8 +64,24 @@ def draw_screen():
     screen.fill(WHITE)
 
     # Draw the characters
-    player_text = font.render(f"{player_one.name}: {player_one.hp}", True, BLACK)
-    screen.blit(player_text, (50, 50))
+    player_one_text = [
+        f"{player_one.name}: {player_one.hp}",
+        f"STR: {player_one.strength}",
+        f"DEX: {player_one.dexterity}",
+        f"CON: {player_one.constitution}",
+        f"INT: {player_one.intelligence}",
+        f"WIS: {player_one.wisdom}",
+        f"CHA: {player_one.charisma}"
+    ]
+
+    # Define the aside area for player_one_text
+    aside_x = 600
+    aside_y = 150
+    y_offset = aside_y
+    for line in player_one_text:
+        text_surface = font.render(line, True, BLACK)
+        screen.blit(text_surface, (aside_x, y_offset))
+        y_offset += 30  # Adjust the offset for the next line
 
     enemy_text = font.render(f"{enemy.name}: {enemy.hp}", True, BLACK)
     screen.blit(enemy_text, (600, 50))
