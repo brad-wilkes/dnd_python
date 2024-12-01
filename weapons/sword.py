@@ -1,4 +1,4 @@
-from normal import Normal
+from .normal import Normal
 
 class Sword(Normal):
     """A class to represent swords."""

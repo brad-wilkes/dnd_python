@@ -1,4 +1,4 @@
-from martial import Martial
+from .martial import Martial
 
 class Polearm(Martial):
     """A class to represent a polearm weapon."""

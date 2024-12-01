@@ -1,4 +1,4 @@
-from martial import Martial
+from .martial import Martial
 
 class Flail(Martial):
     """A class to represent a flail weapon."""
