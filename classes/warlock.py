@@ -17,6 +17,10 @@ class Warlock(Base):
         """Return a random value between 1 and 20."""
         return self.d20.roll()
 
-    def summon_demon(self):
+    def corruption(self):
         """Cast a spell."""
         return self.d20.roll() + self.intelligence
+
+    def summon_imp(self):
+        """Summon an imp."""
+        return self.d20.roll() + self.charisma
