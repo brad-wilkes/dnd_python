@@ -20,3 +20,11 @@ class Fighter(Base):
     def battle_shout(self):
         """Shout a battle cry."""
         return self.d20.roll() + self.strength
+
+    def shield_bash(self):
+        """Bash with a shield."""
+        return self.d20.roll() + self.strength
+
+    def cleave(self):
+        """Cleave through enemies."""
+        return self.d20.roll() + self.strength
