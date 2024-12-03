@@ -4,7 +4,7 @@ from .base import Base
 class Rogue(Base):
     """A class representing a rogue."""
 
-    def __init__(self, name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma):
+    def __init__(self, name, hp, strength, dexterity, intelligence, wisdom, charisma, constitution=10):
 
         """
         :param name: The rogue's name.
