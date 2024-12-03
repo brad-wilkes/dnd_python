@@ -19,3 +19,11 @@ class Bard(Base):
     def sing_praise(self):
         """Sing a song of praise."""
         return self.d20.roll() + self.charisma
+
+    def inspire(self):
+        """Inspire allies."""
+        return self.d20.roll() + self.charisma
+
+    def lullaby(self):
+        """Sing an enemy to sleep."""
+        return self.d20.roll() + self.charisma
