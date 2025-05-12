@@ -53,6 +53,7 @@ dice_results = {
     "d12": d12.roll(),
     "d10": d10.roll()
 }
+# Can I move the roll() methods to the dice classes?
 
 # Set up the characters
 player_one = Rogue("Player One", 100, d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum(), d6.stat_roll_sum())
