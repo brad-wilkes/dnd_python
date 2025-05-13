@@ -1,7 +1,7 @@
 from dice import D20, D8, D6, D4, D12, D10
 from classes import Bard, Fighter, Rogue, Warlock, Wizard, Paladin, Base
 from weapons import Axe, Sword, Flail, Bow, Polearm, Simple, Exotic, Quarterstaff, Dagger
-from ui.game_ui import GameUI
+from ui import GameUI
 
 import pygame
 import sys
