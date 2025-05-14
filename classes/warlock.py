@@ -11,6 +11,8 @@ class Warlock(Base):
         :param hp: The warlock's hit points.
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
+        self.intelligence = intelligence + 2
+        self.intelligence = charisma + 1
         self.d20 = D20()
 
     def attack(self):

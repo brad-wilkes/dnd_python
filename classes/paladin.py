@@ -11,6 +11,8 @@ class Paladin(Base):
         :param hp: The paladin's hit points.
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
+        self.constitution = constitution + 1
+        self.wisdom = wisdom + 2
         self.d20 = D20()
 
     def attack(self):

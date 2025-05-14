@@ -10,6 +10,7 @@ class Bard(Base):
         :param hp: The bard's hit points.
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
+        self.charisma = charisma + 3
         self.d20 = D20()
 
     def attack(self):

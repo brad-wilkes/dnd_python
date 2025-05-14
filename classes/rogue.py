@@ -11,6 +11,7 @@ class Rogue(Base):
         :param hp: The rogue's hit points.
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
+        self.dexterity = dexterity + 3
         self.d20 = D20()
 
     def attack(self):

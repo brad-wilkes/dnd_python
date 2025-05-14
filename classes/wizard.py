@@ -10,6 +10,7 @@ class Wizard(Base):
         :param hp: The wizard's hit points.
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
+        self.intelligence = intelligence + 3
         self.d20 = D20()
 
     def attack(self):
