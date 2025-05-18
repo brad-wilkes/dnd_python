@@ -13,7 +13,7 @@ class Base:
         self.charisma = charisma
         self.d20 = D20()
 
-    def attach(self):
+    def attack(self):
         return self.d20.roll()
 
     def __str__(self):
