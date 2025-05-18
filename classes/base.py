@@ -1,3 +1,5 @@
+from dice import D20
+
 class Base:
     """Base class for all classes"""
     def __init__(self, name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma):
@@ -9,6 +11,10 @@ class Base:
         self.intelligence = intelligence
         self.wisdom = wisdom
         self.charisma = charisma
+        self.d20 = D20()
+
+    def attach(self):
+        return self.d20.roll()
 
     def __str__(self):
         return f"{self.name} ({self.hp})"
