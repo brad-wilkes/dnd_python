@@ -1,4 +1,3 @@
-from dice import D20
 from .base import Base
 
 class Rogue(Base):
@@ -12,11 +11,7 @@ class Rogue(Base):
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
         self.dexterity = dexterity + 3
-        self.d20 = D20()
-
-    def attack(self):
-        """Return a random value between 1 and 20."""
-        return self.d20.roll()
+        self.attack()
 
     def backstab(self):
         """Return a random value between 1 and 20."""

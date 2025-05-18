@@ -1,4 +1,3 @@
-from dice.d20 import D20
 from .base import Base
 
 class Fighter(Base):
@@ -14,11 +13,7 @@ class Fighter(Base):
         self.strength = strength + 2
         self.constitution = constitution + 1
         self.dexterity = dexterity + 1
-        self.d20 = D20()
-
-    def attack(self):
-        """Return a random value between 1 and 20."""
-        return self.d20.roll()
+        self.attack()
 
     def battle_shout(self):
         """Shout a battle cry."""

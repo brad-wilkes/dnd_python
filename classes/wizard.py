@@ -1,4 +1,3 @@
-from dice.d20 import D20
 from .base import Base
 
 class Wizard(Base):
@@ -11,11 +10,8 @@ class Wizard(Base):
         """
         super().__init__(name, hp, strength, dexterity, constitution, intelligence, wisdom, charisma)
         self.intelligence = intelligence + 3
-        self.d20 = D20()
+        self.attack()
 
-    def attack(self):
-        """Return a random value between 1 and 20."""
-        return self.d20.roll()
 
     def fireball(self):
         """Cast a fireball spell."""
